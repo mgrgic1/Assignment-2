@@ -36,7 +36,7 @@ return newArray;
 
 //MYSOME
 function mySome(array, func) {
-  var finalReturn; //will be used to return final value
+  var finalReturn = false; //will be used to return final value. default is false (and can be the return val if condition below isnt true)
   
   for(var i =0; i<array.length;i++)
   {
@@ -47,7 +47,6 @@ function mySome(array, func) {
           finalReturn = true;
           break;
       }
-      else finalReturn = false;
   }
   
   return finalReturn;
@@ -56,12 +55,12 @@ function mySome(array, func) {
 
 //MYEVERY
 function myEvery(array, func) {
-  //by default it is true, but it can be changed to false
+  //by default it is true, but it can be changed to false by condition below
   var finalReturn = true; 
   
   for(var i =0; i<array.length;i++)
   {
-    //if only one value is out of line, the entire function returns false
+    //if only one value does not meet condition in func, the entire function returns false
     //therefore, we break out of loop
       if(!func(array[i])) 
       {
@@ -78,6 +77,7 @@ function myReduce(array, func) {
 var finalSum = 0; //will be the final value returned
 
 for(var i =0; i<array.length;i++) {
+    //adds the sum to the return val specified in func
     finalSum += func(array[i]);
 }
 
